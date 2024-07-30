@@ -4,10 +4,10 @@
 <h1> Hierarchical Classification Domain Dictionary Construction for Process Industry Based on Knowledge Graph </h1>
 
 <div>
-    <p> <b>Shenzhen People's Hospital</b> </p>
+    <p> <b>South China University of Technology & Pengcheng Laboratory</b> </p>
 </div>
 
-![colored_mesh (1)](Images/fig0.png)
+![colored_mesh (1)](Images/fig01.png)
 </div>
 
 ## Introduction
