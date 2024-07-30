@@ -7,7 +7,7 @@
     <p> <b>South China University of Technology & Pengcheng Laboratory</b> </p>
 </div>
 
-![colored_mesh (1)](images/fig00.png)
+![colored_mesh (1)](images/fig00.jpg)
 </div>
 
 ## Introduction
