@@ -9,150 +9,78 @@
 
 ![colored_mesh (1)](images/fig00.jpg)
 </div>
-
 ## Introduction
 
-This project mainly focuses on introducing the multimodal knowledge graph we have developed in the field of nursing (Nursing Multimodal Knowledge Graph, NMKG). We have open-sourced of the **code and database** to facilitate further research by others.
+This project focuses on constructing a hierarchical classification domain dictionary for the process industry, leveraging knowledge graphs. The process industry, encompassing metallurgy, petroleum, chemicals, building materials, and electricity, is essential for economic and societal development but faces challenges such as insufficient automation and skilled labor shortages. Our method includes efficient entity recognition and relationship extraction, effective updating and expansion of industrial entities, and systematic mapping of entity categories to build a comprehensive dictionary. This provides robust technical support for industrial knowledge management and intelligent manufacturing.
 
-The establishment of NMKG effectively integrates various types of data, including clinical databases, nursing training databases, and internet data. The NMKG contains more than 60,000 entities and 300,000 relationships.
+## Features
+- **Hierarchical Classification**: Organizes domain-specific terms and concepts in a hierarchical structure for efficient data management and retrieval.
+- **Knowledge Graph Integration**: Utilizes knowledge graphs to interlink related concepts and provide context-aware information retrieval.
+- **Scalability**: Designed to handle large-scale industrial data with the ability to scale as needed.
+- **Flexibility**: Easily adaptable to different domains within the process industry.
+![colored_mesh (1)](images/fig01.png)
 
-## Overall
+## Installation
 
-We have constructed a MKG in the nursing domain, centered around patients and diseases, with nursing issues, nursing techniques, nursing assessments, and disease symptoms as focal points, comprising a total of 62,909 entities and 330,285 relationships. 
+To install and set up this project, follow these steps:
 
-Nursing knowledge is represented and stored through knowledge triplets, namely **(head entity, relationship, tail entity)***.
+1. **Clone the Repository**
+    ```bash
+    git clone https://github.com/ecjtulrh/IndustryDictionary/.git
+    cd code
+    ```
 
-eg.(Disease, has_nurse, Nursing_Technique), (Patient, has_profile, Profile), ...
+2. **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
- ![colored_mesh (1)](Images/fig6.png)
+3. **Setup Neo4j Database**
+    - Download and install Neo4j from [Neo4j Download Center](https://neo4j.com/download/)
+    - Start the Neo4j database and set up a new project
+    - Import the provided data into Neo4j
 
- The entities encompass 17 types, including patients, diseases, examinations, medications, nursing techniques, nursing procedures, nursing assessments, nursing measures, images, videos, and more. 
- 
- The relationships consist of 20 types, such as drugs_of, has_assessment, has_disease, has_profile, has_symptom, and others. Table 1 presents statistics on the number of entities and relationships in this NMKG.
+4. **Configure Settings**
+    - Update the `config.json` file with your Neo4j database credentials and other configuration settings
 
- | Entities | Quantity | Relationships | Relationships | 
-|-------------|-------------|-------------|-------------|
-|Patient|	100	|belongs_to|	8864|
-|Profile|	2054	|cure_way	|21050|
-|Check	|3353|	acompany_with|	12029|
-|Cure	|544|	common_drug|	14649|
-|Disease	|8808	|do_eat	|20238|
-|Symptom	|5998	|drugs_of	|17315|
-|Drug	|3828	|has_assessment|	709|
-|Nursing_Operation	|3929	|has_disease|	132|
-|Nursing_Technique	|192|	has_measures|	728|
-|NursingAssessment	|709	|has_nurse	22053|
-|Department	|54	|has_operation|	960|
-|Food	|4870	|has_picture|	7705|
-|NursingMeasure|	728|	has_problem|	756|
-|NursingProblem	|128	|has_profile|	1276
-|Producer	|12701	|has_symptom	|54717
-|Video	|7208	|has_video|	7208|
-|Picture	|7705|	need_check|	39423|
-|	|	|no_eat|	22247|
-|	|	|recommand_drug|	57990|
-|	|	|recommand_eat|	20236|
-|Total: 62909|	|Total: 330285| |
+## Usage
 
----Our **Nursing Multimodal Knowledge Graph**.
+1. **Run the Entity Recognition and Relationship Extraction**
+    ```bash
+    python entity_recognition.py
+    ```
 
- ![colored_mesh (2)](Images/graph2.svg)
+2. **Update and Expand Entities**
+    ```bash
+    python update_entities.py
+    ```
 
-## Implemented features
+3. **Build the Hierarchical Classification Dictionary**
+    ```bash
+    python build_dictionary.py
+    ```
 
---We have implemented the following functions using the NMKG：
+## Experimental Results
 
- - [x] Construction of Personalized Patient Care Profiles
- - [x] Clinical Nursing Semantic Search
- - [x] Clinical Nursing Instant Question-Answering
- - [x] Personalized Nursing Decision-Making
+For detailed experimental results, comparisons with baseline models, and error analysis, refer to the [paper](link-to-paper).
 
- ![colored_mesh (3)](Images/fig7.png)
+## Contributions
 
+We welcome contributions to enhance this project. Please follow these steps:
 
- ![colored_mesh (4)](Images/fig8.png)
-<div align="center">
- <div>
-    <p> <b>Clinical Nursing Semantic Search</b> </p>
- </div>
-</div>
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature-branch`)
+5. Create a new Pull Request
 
- ![colored_mesh (5)](Images/fig9.png)
+## License
 
-<div align="center">
- <div>
-    <p> <b>Clinical Nursing Instant Question-Answering</b> </p>
- </div>
-</div>
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
+## Acknowledgements
 
-## Datasets
-### Project catalog
-```shell
-G:.
-│  build_json.py
-│  build_medicalgraph.py
-│  build_medicalgraph_from_json.py
-│  requirement.txt
-│
-├─Data_processing
-│      create_word2vec_input.py
-│      create_word_table.py
-│
-├─KNN_predict
-│      classifier.py
-│      create_vec.py
-│      neo_models.py
-│      nursing_class.py
-│      predict.py
-│      read_csv.py
-│      text_fasttext.py
-│
-├─MyCrawler
-│  └─MyCrawler
-│      │  items.py
-│      │  middlewares.py
-│      │  pipelines.py
-│      │  settings.py
-│      │  __init__.py
-│      │
-│      ├─data
-│      └─spiders
-│              medical_pedia.py
-│              nur_pedia.py
-│              __init__.py
-│
-└─NursingData
-    │  disease_picture.xlsx
-    │  disease_video.xlsx
-    │  nurse_technique.xlsx
-    │  NursingAssessment010.xlsx
-    │  NursingMeasure010.xlsx
-    │  NursingProblem010.xlsx
-    │  Nursing_graph.xlsx
-    │  Nursing_graph01.xlsx
-    │  patent-disease.xlsx
-    │  patient01.xlsx
-    │  Relation.xlsx
-    │  yanke-nurse.xlsx
-    │
-    └─dict
-            check.txt
-            deny.txt
-            department.txt
-            disease.txt
-            drug.txt
-            food.txt
-            Nurse care technology.txt
-            producer.txt
-            symptom.txt
-```
-Knowledge Graph Data:
- - *entities.dict*: a dictionary map entities to unique ids
- - *relations.dict*: a dictionary map relations to unique ids
- - *train.txt*: the KGE model is trained to fit this data set
- - *valid.txt*: create a blank file if no validation data is available
- - *test.txt*: the KGE model is evaluated on this data set
+We thank all the contributors and the community for their valuable input and support.
 
 <h2 id="1"> Quick Start</h2>
 
