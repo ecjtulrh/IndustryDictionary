@@ -9,7 +9,8 @@
 
 ![colored_mesh (1)](images/fig00.jpg)
 </div>
-## Introduction
+
+# Introduction
 
 This project focuses on constructing a hierarchical classification domain dictionary for the process industry, leveraging knowledge graphs. The process industry, encompassing metallurgy, petroleum, chemicals, building materials, and electricity, is essential for economic and societal development but faces challenges such as insufficient automation and skilled labor shortages. Our method includes efficient entity recognition and relationship extraction, effective updating and expansion of industrial entities, and systematic mapping of entity categories to build a comprehensive dictionary. This provides robust technical support for industrial knowledge management and intelligent manufacturing.
 
@@ -18,6 +19,7 @@ This project focuses on constructing a hierarchical classification domain dictio
 - **Knowledge Graph Integration**: Utilizes knowledge graphs to interlink related concepts and provide context-aware information retrieval.
 - **Scalability**: Designed to handle large-scale industrial data with the ability to scale as needed.
 - **Flexibility**: Easily adaptable to different domains within the process industry.
+
 ![colored_mesh (1)](images/fig01.png)
 
 ## Installation
@@ -86,21 +88,20 @@ We thank all the contributors and the community for their valuable input and sup
 
 <h3 id="1-1">Environment Configuration</h3>
 
-*KnowLM* supports both **manual** and **docker image** environment configuration, you can choose the appropriate way to build.
+*KGDD* supports both **manual** and **docker image** environment configuration, you can choose the appropriate way to build.
 #### 🔧Manual Environment Configuration
 ```shell
 
-conda create -n knowlm python=3.8 -y
+conda create -n kgdd python=3.8 -y
 
-conda activate NMKG
+conda activate kgdd
 pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
 
 pip install -r requirements.txt
 ```
 #### 🐳Building With Docker Images
 ```shell
-docker pull zjunlp/knowlm:v.1
-docker run -it zjunlp/knowlm:v.1 /bin/bash
+Coming soon
 ```
 
 
